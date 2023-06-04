@@ -33,4 +33,8 @@ public class InputHandler : MonoBehaviour {
 		return inputVector;
 	}
 
+	public int GetRotationDirection() {
+		return (int)_inputActions.Game.Rotate.ReadValue<float>();
+	}
+
 }
