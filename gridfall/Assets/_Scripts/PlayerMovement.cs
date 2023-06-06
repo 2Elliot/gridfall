@@ -8,11 +8,24 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField] private InputHandler _inputHandler;
 
-	[Header("Movement Settings"), Space(5)]
+	[Header("Movement Settings")]
 	[SerializeField] private int _moveDistance = 1;
 	[SerializeField] [Tooltip("In Seconds")] private float _moveTime = 1f;
 	[SerializeField] [Tooltip("In Seconds")] private float _rotationTime = 1f;
 
+	[Header("Locking Settings")]
+	// [SerializeField] private float movementLockingDistance = 0.3f;
+	[SerializeField] private float rotationLockingDistance = 10f;
+
+	[Header("Raycast Settings")]
+	[SerializeField] private LayerMask _layerMask;
+	[SerializeField] private float _raycastDistance = 2f;
+	[SerializeField] private Transform _raycastStartingLocation;
+
+	[Header("Bounce Settings")]
+	[SerializeField] private bool _bounceFeedback = true;
+	[SerializeField] [Tooltip("A fraction of Move Distance")] private float _bounceDistance = 0.2f;
+	[SerializeField] private float _bounceTime = 0.2f;
 
 	private bool _isMoving = false;
 
@@ -53,10 +66,20 @@ public class PlayerMovement : MonoBehaviour
 			targetDirection.z = Mathf.Ceil(direction.y);
 		}
 
-		// Raycast check for object in the way	
+		targetDirection = (Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y));
+
+		if (CheckForCollision(targetDirection)) {
+			if (!_bounceFeedback) {
+				_isMoving = false;
+				yield break;
+			}
+
+			StartCoroutine(Bounce(targetDirection));
+			yield break;
+		}
 
 		// Finds target location based off y rotation
-		Vector3 targetLocation = transform.position + (Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y)) * _moveDistance;
+		Vector3 targetLocation = transform.position + targetDirection * _moveDistance;
 		
 		float timer = 0f;	
 		while (Vector3.Distance(transform.position, targetLocation) > 0.05f) {
@@ -67,6 +90,33 @@ public class PlayerMovement : MonoBehaviour
 		transform.position = targetLocation;
 		FixPosition();
 		_isMoving = false;
+		yield break;
+	}
+
+	private IEnumerator Bounce(Vector3 direction) {
+		Vector3 targetLocation = transform.position + direction * (_bounceDistance / _moveDistance);
+		Vector3 previousPosition = transform.position;
+
+		// Bounce too
+		float timer = 0f;
+		while (Vector3.Distance(transform.position, targetLocation) > 0.05f) {
+			transform.position = Vector3.Lerp(previousPosition, targetLocation, timer / _bounceTime);
+			timer += Time.deltaTime;
+			yield return null;
+		}
+		transform.position = targetLocation;
+
+		// Bounce away
+		timer = 0f;
+		while (Vector3.Distance(transform.position, previousPosition) > 0.05f) {
+			transform.position = Vector3.Lerp(targetLocation, previousPosition, timer / _bounceTime);
+			timer += Time.deltaTime;
+			yield return null;
+		}
+		transform.position = previousPosition;
+		FixPosition();
+		_isMoving = false;
+		yield break;
 	}
 
 	private IEnumerator Rotate(int direction) {
@@ -91,8 +141,20 @@ public class PlayerMovement : MonoBehaviour
 		_isMoving = false;
 	}
 
+	private bool CheckForCollision(Vector3 direction) {
+		var ray = new Ray(_raycastStartingLocation.position, direction);
+		RaycastHit hit;
+		if (Physics.Raycast(ray, out hit, _raycastDistance, _layerMask)) return true;
+		else return false;
+	}
+
 	private void FixPosition() {
 		// Rounds position to nearest int
 		transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
+		
+		// Round rotation to nearest cardinal direction
+		for (int i = 0; i < 360; i += 90) {
+			if (transform.eulerAngles.y > i - rotationLockingDistance && transform.eulerAngles.y < i + rotationLockingDistance) transform.rotation = Quaternion.Euler(new Vector3(0, i, 0));
+		}
 	}
 }
