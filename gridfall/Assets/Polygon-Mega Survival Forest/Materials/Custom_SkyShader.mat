@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_SkyShader
+  m_Shader: {fileID: 4800000, guid: 3aa66d4568006654c84a58c95787c577, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _Brightness: 2
+    - _Exposure: 0.11
+    - _GradientLevel: 0.943
+    - _UVRotation: 14
+    m_Colors:
+    - _BottomColor: {r: 0.12150973, g: 0.33664694, b: 0.6320754, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0.31049964, g: 0.45237774, b: 0.5943396, a: 1}
+    - _GroundColor: {r: 0.2, g: 0.4, b: 0.6, a: 1}
+    - _SkyTint: {r: 0.4528302, g: 0.44162634, b: 0.44162634, a: 1}
+    - _TopColor: {r: 0.86665505, g: 0.91231924, b: 0.9433962, a: 1}
+  m_BuildTextureStacks: []

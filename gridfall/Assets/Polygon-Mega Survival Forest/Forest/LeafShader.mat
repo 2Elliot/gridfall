@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LeafShader
+  m_Shader: {fileID: 4800000, guid: 316ff90a7b853574f9d3e1aa7ab80b71, type: 3}
+  m_ShaderKeywords: _HIGHLIGHTS_ON _WAVES_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GradientTex:
+        m_Texture: {fileID: 2800000, guid: f20711d6865b1ff4a957fd358cb52fd2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3c4dc5e25666e2f44b04bfbc785e9593, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureRamp:
+        m_Texture: {fileID: 2800000, guid: 78be800434f7f754fad91c42691b9d93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample:
+        m_Texture: {fileID: 2800000, guid: 78be800434f7f754fad91c42691b9d93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: bc49ea7c77f07a6419aa163f49ecd0ab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindNoiseTexture:
+        m_Texture: {fileID: 2800000, guid: 78be800434f7f754fad91c42691b9d93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaOffset: -0.386
+    - _Ambient: 0.447
+    - _Ambient0deg: 1
+    - _Ambient180deg: 1
+    - _Ambient90deg: 0.98
+    - _AmbientAmount: 0.232
+    - _Color1Level: 0.476
+    - _Cutoff: 0.554
+    - _FoamDistance: 0.05
+    - _FoamHardness: 0.33
+    - _FoamOpacity: 0.65
+    - _FoamScale: 0.2
+    - _FoamSpeed: 0.125
+    - _FresnelIntensity: 0.4
+    - _Highlights: 1
+    - _Lambert180deg: 0.138
+    - _Lambert90deg: 0.05
+    - _OffsetAmbient: 1
+    - _Opacity: 0.5
+    - _OpacityDepth: 6.5
+    - _OutlineWidth: 0.0065
+    - _ReflectionsCutoff: 0.35
+    - _ReflectionsCutoffScale: 3
+    - _ReflectionsCutoffScrollSpeed: -0.025
+    - _ReflectionsOpacity: 0.65
+    - _ReflectionsScale: 4.8
+    - _ReflectionsScrollSpeed: 0.05
+    - _ShallowColorDepth: 2.75
+    - _Time: 0
+    - _WaveAmplitude: 0.5
+    - _WaveIntensity: 0.15
+    - _WaveSpeed: 1
+    - _Waves: 1
+    - _WindForce: 4.61
+    - _WindJitter: 0.054
+    - _WindScroll: 0.021
+    - _WindSpeed: 1
+    - _WindStrength: 4.1
+    - __dirty: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 0.4107094, g: 1, b: 0.041295886, a: 1}
+    - _Color2: {r: 1, g: 0.5688108, b: 0, a: 0}
+    - _ColorOverlay: {r: 0.42733473, g: 0.9245283, b: 0.343448, a: 0}
+    - _DeepColor: {r: 0, g: 0.3333333, b: 0.8509804, a: 1}
+    - _FoamColor: {r: 0.8705882, g: 0.8705882, b: 0.8705882, a: 1}
+    - _FresnelColor: {r: 0.8313726, g: 0.8313726, b: 0.8313726, a: 1}
+    - _HighlightColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _ShallowColor: {r: 0, g: 0.6117647, b: 1, a: 1}
+    - _WindDirection: {r: 3.46, g: 0, b: 1.38, a: 1}
+  m_BuildTextureStacks: []
